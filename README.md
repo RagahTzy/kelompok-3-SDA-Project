@@ -1,5 +1,5 @@
 # kelompok 3 SDA Project
-Anggota Kelompok:
+*Anggota Kelompok:*
 - Ragah Mujahidin        (2407051015)
 - Arif Ahmad Muzakky     (2407051017)
 - Neti Prinayani         (2407051010)
