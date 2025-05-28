@@ -1,0 +1,9 @@
+# Ketentuan UAP SDA:
+- Menggunakan bahasa C++
+- Menentukan tema projek yang berbeda dari yang lain
+- Program menggunakan operasi CRUD (Create, Read, Update, Delete) *(25%)
+- Penggunaan struktur data minimal 2, contoh: Stack, Queue *(25%)
+- Algoritma pencarian dan pengurutan (search & sort) *(20%)
+- Efisiensi dan kerapian kode (Penggunaan fungsi, modularitas, clean code, comment) *(15%)
+- Presentasi project dan penjelasan *(15%)
+- Penggunaan library dan kreativitas menjadi nilai tambah bagi masing masing kelompok
