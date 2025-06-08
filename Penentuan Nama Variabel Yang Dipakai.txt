@@ -1,0 +1,25 @@
+|     Variabel       | 	    Tipe      |   Makna                                                         |
+| ------------------ | -------------- | --------------------------------------------------------------- |
+| `Task`             | `struct`       | Struktur data tugas, menyimpan nama dan deadline                |
+| `name`             | `string`       | Nama tugas                                                      |
+| `deadline`         | `string`       | Tanggal deadline tugas (format YYYY-MM-DD)                      |
+| `tasks`            | `vector<Task>` | List semua tugas yang aktif                                     |
+| `deletedTasks`     | `stack<Task>`  | Stack tugas yang dihapus (untuk undo)                           |
+| `FILE_NAME`        | `const string` | Nama file tempat menyimpan data tugas (`tasks.txt`)             |
+| `clearScreen()`    | `void`         | Fungsi untuk membersihkan layar tergantung OS                   |
+| `saveToFile()`     | `void`         | Menyimpan `tasks` ke dalam file `tasks.txt`                     |
+| `loadFromFile()`   | `void`         | Membaca `tasks` dari file saat program dijalankan               |
+| `addTask()`        | `void`         | Menambahkan data tugas baru                                     |
+| `showTasks()`      | `void`         | Menampilkan semua tugas                                         |
+| `searchTask()`     | `void`         | Mencari tugas berdasarkan kata kunci nama                       |
+| `updateTask()`     | `void`         | Mengubah nama atau deadline tugas                               |
+| `deleteTask()`     | `void`         | Menghapus tugas dan menyimpan ke stack undo                     |
+| `undoDelete()`     | `void`         | Mengembalikan tugas terakhir yang dihapus                       |
+| `sortByDeadline()` | `void`         | Mengurutkan tugas berdasarkan deadline                          |
+| `choice`           | `int`          | Menyimpan pilihan menu dari user                                |
+| `dummy`            | `string`       | Penampung input sementara agar tidak tertinggal `\n` dari `cin` |
+| `index`            | `int`          | Nomor urutan tugas yang dipilih user untuk update/hapus         |
+| `keyword`          | `string`       | Kata kunci pencarian nama tugas                                 |
+| `line`             | `string`       | Baris dari file yang sedang dibaca (`loadFromFile`)             |
+| `delimiter`        | `size_t`       | Posisi karakter saat parsing file 				|
+| `restored`         | `Task`         | Tugas yang dikembalikan saat `undoDelete()`                     |
