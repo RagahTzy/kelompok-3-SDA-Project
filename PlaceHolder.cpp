@@ -70,7 +70,6 @@ void sortByDeadline() {
 
 int main() {
     loadFromFile(); // TODO: Panggil saat program dimulai
-    cout << "Hello world" << endl;
 
     int choice;
     string dummy;
