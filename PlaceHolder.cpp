@@ -49,7 +49,18 @@ void showTasks() {
 }
 
 void searchTask() {
-    // TODO: Cari tugas berdasarkan nama
+    clearScreen();
+    string keyword;
+    cout << "Masukkan kata kunci nama tugas: ";
+    getline(cin, keyword);
+    bool found = false;
+    for (const auto& task : tasks) {
+        if (task.name.find(keyword) != string::npos) {
+            cout << "- " << task.name << " (Deadline: " << task.deadline << ")\n";
+            found = true;
+        }
+    }
+    if (!found) cout << "Tugas tidak ditemukan.\n";
 }
 
 void updateTask() {
