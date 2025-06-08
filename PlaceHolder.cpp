@@ -64,7 +64,23 @@ void searchTask() {
 }
 
 void updateTask() {
-    // TODO: Update tugas berdasarkan nomor indeks
+    clearScreen();
+    showTasks();
+    cout << "\nPilih nomor tugas yang ingin diupdate: ";
+    int index;
+    cin >> index;
+    cin.ignore();
+    if (index < 1 || index > (int)tasks.size()) {
+        cout << "Nomor tidak valid.\n";
+        return;
+    }
+
+    cout << "Nama baru: ";
+    getline(cin, tasks[index - 1].name);
+    cout << "Deadline baru (YYYY-MM-DD): ";
+    getline(cin, tasks[index - 1].deadline);
+    saveToFile();
+    cout << "Tugas berhasil diupdate.\n";
 }
 
 void deleteTask() {
