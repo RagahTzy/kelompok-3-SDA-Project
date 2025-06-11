@@ -29,15 +29,31 @@ const string FILE_NAME = "tasks.txt";
 // ===========================
 
 void clearScreen() {
-    // TODO: Implementasi clear screen menggunakan system()
+   system(CLEAR);
 }
 
 void saveToFile() {
-    // TODO: Simpan data dari vector tasks ke file teks
+    ofstream outFile(FILE_NAME);
+    for (const Task& task : tasks) {
+        outFile << task.name << "|" << task.deadline << "\n";
+    }
+    outFile.close();
 }
-
 void loadFromFile() {
-    // TODO: Baca data dari file dan isi vector tasks
+   ifstream inFile(FILE_NAME);
+    if (!inFile) return;
+
+    string line;
+    while (getline(inFile, line)) {
+        size_t delimiter = line.find("|");
+        if (delimiter != string::npos) {
+            Task task;
+            task.name = line.substr(0, delimiter);
+            task.deadline = line.substr(delimiter + 1);
+            tasks.push_back(task);
+        }
+    }
+    inFile.close();
 }
 
 void addTask() {
