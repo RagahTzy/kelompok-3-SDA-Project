@@ -39,6 +39,7 @@ void saveToFile() {
     }
     outFile.close();
 }
+
 void loadFromFile() {
    ifstream inFile(FILE_NAME);
     if (!inFile) return;
