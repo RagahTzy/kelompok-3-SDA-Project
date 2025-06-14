@@ -61,11 +61,26 @@ void deleteTask() {
 }
 
 void undoDelete() {
-    // TODO: Kembalikan tugas yang dihapus sebelumnya
+    clearScreen();
+    if (deletedTasks.empty()) {
+        cout << "Tidak ada tugas yang bisa di-undo.\n";
+        return;
+    }
+
+    Task restored = deletedTasks.top();
+    deletedTasks.pop();
+    tasks.push_back(restored);
+    saveToFile();
+    cout << "Penghapusan tugas dibatalkan.\n";
 }
 
 void sortByDeadline() {
-    // TODO: Urutkan tugas berdasarkan deadline
+    clearScreen();
+    sort(tasks.begin(), tasks.end(), [](const Task& a, const Task& b) {
+        return a.deadline < b.deadline;
+    });
+    saveToFile();
+    cout << "Tugas diurutkan berdasarkan deadline.\n";
 }
 
 int main() {
