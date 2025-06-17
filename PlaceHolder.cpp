@@ -58,11 +58,27 @@ void loadFromFile() {
 }
 
 void addTask() {
-    // TODO: Tambah tugas baru ke vector tasks
+    clearScreen();
+    Task newTask;
+    cout << "Nama tugas: ";
+    getline(cin, newTask.name);
+    cout << "Deadline (YYYY-MM-DD): ";
+    getline(cin, newTask.deadline);
+    tasks.push_back(newTask);
+    saveToFile();
+    cout << "Tugas berhasil ditambahkan!\n";
 }
 
 void showTasks() {
-    // TODO: Tampilkan semua tugas dalam vector tasks
+    clearScreen();
+    if (tasks.empty()) {
+    cout << "Belum ada tugas.\n";
+    return;
+    }
+    cout << "Daftar Tugas:\n";
+    for (size_t i = 0; i < tasks.size(); i++) {
+    cout << i + 1 << ". " << tasks[i].name << " - Deadline: " << tasks[i].deadline << "\n";
+    }
 }
 
 void searchTask() {
