@@ -84,7 +84,21 @@ void updateTask() {
 }
 
 void deleteTask() {
-    // TODO: Hapus tugas dari vector dan simpan di stack
+    clearScreen();
+    showTasks();
+    cout << "\nPilih nomor tugas yang ingin dihapus: ";
+    int index;
+    cin >> index;
+    cin.ignore();
+    if (index < 1 || index > (int)tasks.size()) {
+        cout << "Nomor tidak valid.\n";
+        return;
+    }
+
+    deletedTasks.push(tasks[index - 1]); // Simpan untuk undo
+    tasks.erase(tasks.begin() + index - 1);
+    saveToFile();
+    cout << "Tugas berhasil dihapus.\n";
 }
 
 void undoDelete() {
