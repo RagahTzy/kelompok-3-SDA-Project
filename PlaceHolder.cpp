@@ -82,15 +82,56 @@ void showTasks() {
 }
 
 void searchTask() {
-    // TODO: Cari tugas berdasarkan nama
+    clearScreen();
+    string keyword;
+    cout << "Masukkan kata kunci nama tugas: ";
+    getline(cin, keyword);
+    bool found = false;
+    for (const auto& task : tasks) {
+        if (task.name.find(keyword) != string::npos) {
+            cout << "- " << task.name << " (Deadline: " << task.deadline << ")\n";
+            found = true;
+        }
+    }
+    if (!found) cout << "Tugas tidak ditemukan.\n";
 }
 
 void updateTask() {
-    // TODO: Update tugas berdasarkan nomor indeks
+    clearScreen();
+    showTasks();
+    cout << "\nPilih nomor tugas yang ingin diupdate: ";
+    int index;
+    cin >> index;
+    cin.ignore();
+    if (index < 1 || index > (int)tasks.size()) {
+        cout << "Nomor tidak valid.\n";
+        return;
+    }
+
+    cout << "Nama baru: ";
+    getline(cin, tasks[index - 1].name);
+    cout << "Deadline baru (YYYY-MM-DD): ";
+    getline(cin, tasks[index - 1].deadline);
+    saveToFile();
+    cout << "Tugas berhasil diupdate.\n";
 }
 
 void deleteTask() {
-    // TODO: Hapus tugas dari vector dan simpan di stack
+    clearScreen();
+    showTasks();
+    cout << "\nPilih nomor tugas yang ingin dihapus: ";
+    int index;
+    cin >> index;
+    cin.ignore();
+    if (index < 1 || index > (int)tasks.size()) {
+        cout << "Nomor tidak valid.\n";
+        return;
+    }
+
+    deletedTasks.push(tasks[index - 1]); // Simpan untuk undo
+    tasks.erase(tasks.begin() + index - 1);
+    saveToFile();
+    cout << "Tugas berhasil dihapus.\n";
 }
 
 void undoDelete() {
