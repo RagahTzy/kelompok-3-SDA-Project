@@ -1,5 +1,3 @@
-// main.cpp
-
 #include <iostream>
 #include <vector>
 #include <stack>
@@ -24,14 +22,12 @@ vector<Task> tasks;
 stack<Task> deletedTasks;
 const string FILE_NAME = "tasks.txt";
 
-// ===========================
-// Placeholder Fungsi
-// ===========================
-
+// Fungsi untuk clear screen
 void clearScreen() {
    system(CLEAR);
 }
 
+// Simpan semua tugas ke file
 void saveToFile() {
     ofstream outFile(FILE_NAME);
     for (const Task& task : tasks) {
@@ -40,6 +36,7 @@ void saveToFile() {
     outFile.close();
 }
 
+// Baca tugas dari file saat program dimulai
 void loadFromFile() {
    ifstream inFile(FILE_NAME);
     if (!inFile) return;
@@ -57,6 +54,7 @@ void loadFromFile() {
     inFile.close();
 }
 
+// Tambah tugas
 void addTask() {
     clearScreen();
     Task newTask;
@@ -69,18 +67,20 @@ void addTask() {
     cout << "Tugas berhasil ditambahkan!\n";
 }
 
+// Tampilkan semua tugas
 void showTasks() {
     clearScreen();
     if (tasks.empty()) {
-    cout << "Belum ada tugas.\n";
-    return;
+        cout << "Belum ada tugas.\n";
+        return;
     }
     cout << "Daftar Tugas:\n";
     for (size_t i = 0; i < tasks.size(); i++) {
-    cout << i + 1 << ". " << tasks[i].name << " - Deadline: " << tasks[i].deadline << "\n";
+        cout << i + 1 << ". " << tasks[i].name << " - Deadline: " << tasks[i].deadline << "\n";
     }
 }
 
+// Cari tugas berdasarkan nama
 void searchTask() {
     clearScreen();
     string keyword;
@@ -96,6 +96,7 @@ void searchTask() {
     if (!found) cout << "Tugas tidak ditemukan.\n";
 }
 
+// Update tugas
 void updateTask() {
     clearScreen();
     showTasks();
@@ -116,6 +117,7 @@ void updateTask() {
     cout << "Tugas berhasil diupdate.\n";
 }
 
+// Hapus tugas
 void deleteTask() {
     clearScreen();
     showTasks();
@@ -134,6 +136,7 @@ void deleteTask() {
     cout << "Tugas berhasil dihapus.\n";
 }
 
+// Undo penghapusan
 void undoDelete() {
     clearScreen();
     if (deletedTasks.empty()) {
@@ -148,6 +151,7 @@ void undoDelete() {
     cout << "Penghapusan tugas dibatalkan.\n";
 }
 
+// Urutkan berdasarkan deadline
 void sortByDeadline() {
     clearScreen();
     sort(tasks.begin(), tasks.end(), [](const Task& a, const Task& b) {
@@ -158,8 +162,7 @@ void sortByDeadline() {
 }
 
 int main() {
-    loadFromFile(); // TODO: Panggil saat program dimulai
-
+    loadFromFile(); // Load saat program mulai
     int choice;
     string dummy;
     while (true) {
